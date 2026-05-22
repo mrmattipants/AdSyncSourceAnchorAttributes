@@ -1,4 +1,4 @@
-﻿function Get-AdSyncSourceAnchorAttibutes {
+﻿function Get-AdSyncSourceAnchorAttributes {
     param(
         [string]$Username,
         [string]$ObjectGuid,
@@ -46,13 +46,13 @@
 }
 
 # ObjectGUID Property
-#$Output = Get-AdSyncSourceAnchorAttibutes -ObjectGuid "338a5711-1e30-4fa1-843a-88da41d144e4"
+#$Output = Get-AdSyncSourceAnchorAttributes -ObjectGuid "338a5711-1e30-4fa1-843a-88da41d144e4"
 #$Output | Format-List
 
 # mS-DS-ConsistencyGuid Property
-#$Output = Get-AdSyncSourceAnchorAttibutes -MsDsConsistencyGuid "11 57 8A 33 30 1E A1 4F 84 3A 88 DA 41 D1 44 E4"
+#$Output = Get-AdSyncSourceAnchorAttributes -MsDsConsistencyGuid "11 57 8A 33 30 1E A1 4F 84 3A 88 DA 41 D1 44 E4"
 #$Output | Format-List
 
 # On-PremisesImmutableId Property
-#$Output = Get-AdSyncSourceAnchorAttibutes -ImmutableId "EVeKMzAeoU+EOojaQdFE5A=="
+#$Output = Get-AdSyncSourceAnchorAttributes -ImmutableId "EVeKMzAeoU+EOojaQdFE5A=="
 #$Output | Format-List
