@@ -9,7 +9,12 @@
     If ($Username) {
 
         $UserObject = Get-AdUser -Identity $Username -Properties objectGUID,mS-DS-ConsistencyGuid,msDS-ExternalDirectoryObjectId
-        $MsDsConsistencyGuid = ($UserObject."mS-DS-ConsistencyGuid" | % ToString X2) -join ' '
+
+        If ($UserObject.objectGUID) {
+            $ObjectGuid = $UserObject.objectGUID
+        } ElseIf ($UserObject."mS-DS-ConsistencyGuid") {
+            $MsDsConsistencyGuid = ($UserObject."mS-DS-ConsistencyGuid" | % ToString X2) -join ' '
+        }
 
     }
 
@@ -19,10 +24,10 @@
         $MsDsConsistencyGuid = ([system.convert]::FromBase64String($ImmutableId) | % ToString X2) -join ' '
 
     } ElseIf ($MsDsConsistencyGuid) {
-        
+
         $ImmutableId = [system.convert]::ToBase64String([byte[]] (-split (($MsDsConsistencyGuid -replace " ", "") -replace '..', '0x$& ')))
         $ObjectGuid = $guid = [GUID]([system.convert]::FromBase64String($ImmutableId))
-       
+
 
     } ElseIf ($ImmutableId) {
 
